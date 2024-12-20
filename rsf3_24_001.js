@@ -78,6 +78,22 @@
 
     webform.validators.rsf3 = function () {
         var values = Drupal.settings.mywebform.values;
+
+
+        //---------------------------------------------------------------------
+
+        var fieldError = validateFieldNoHieroglyphs('Entitatea', values.dec_fiscCod_name);
+        if (fieldError) {
+            webform.errors.push({
+                'fieldName': fieldError.fieldName,
+                'index': 0,
+                'weight': 10,
+                'msg': fieldError.message
+            });
+        }
+
+        //--------------------------------------------------------------------
+
         var dateObj = new Date();
         var msg = '';
 
